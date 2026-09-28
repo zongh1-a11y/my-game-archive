@@ -1,0 +1,23 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#14202c"/>
+    <stop offset="0.55" stop-color="#0d1117"/>
+    <stop offset="1" stop-color="#232c37"/>
+  </linearGradient>
+  <radialGradient id="r" cx="75%" cy="22%" r="45%">
+    <stop offset="0" stop-color="#8bb8d9" stop-opacity=".35"/>
+    <stop offset="1" stop-color="#8bb8d9" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="900" height="1200" fill="url(#g)"/>
+<rect width="900" height="1200" fill="url(#r)"/>
+<circle cx="665" cy="300" r="165" fill="none" stroke="#b9d4e8" stroke-opacity=".28" stroke-width="2"/>
+<circle cx="665" cy="300" r="110" fill="none" stroke="#b9d4e8" stroke-opacity=".18" stroke-width="2"/>
+<path d="M80 880 C260 730 410 820 570 675 C710 550 760 420 830 260" fill="none" stroke="#dbeeff" stroke-opacity=".23" stroke-width="5"/>
+<path d="M70 940 C310 770 430 900 660 700" fill="none" stroke="#90b7d0" stroke-opacity=".15" stroke-width="2"/>
+<text x="70" y="100" fill="#9daebb" font-family="Arial, sans-serif" font-size="24" letter-spacing="8">GAME ARCHIVE 001</text>
+<text x="70" y="995" fill="#edf5fb" font-family="Arial, sans-serif" font-size="74" font-weight="700">PRAGMATA</text>
+<text x="72" y="1050" fill="#aebdca" font-family="Arial, sans-serif" font-size="32">识质存在</text>
+<text x="72" y="1120" fill="#6f7f8d" font-family="Arial, sans-serif" font-size="20" letter-spacing="5">PLACEHOLDER COVER</text>
+</svg>
