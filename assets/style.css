@@ -302,6 +302,17 @@ footer {
   object-fit: cover;
 }
 
+.gallery figure {
+  margin: 0;
+}
+
+.gallery figcaption {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
 .shot-placeholder {
   aspect-ratio: 16 / 9;
   display: flex;
@@ -344,4 +355,60 @@ footer {
   .site-header, .detail-nav, main, footer { width: min(100% - 24px, 1180px); }
   .meta-grid { grid-template-columns: 1fr; }
   .detail-nav span { display: none; }
+}
+
+
+.game-facts {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.game-facts div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(42, 49, 57, .65);
+}
+
+.game-facts div:last-child {
+  border-bottom: 0;
+}
+
+.game-facts span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.game-facts strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.score-list .score-total {
+  margin-top: 6px;
+  padding-top: 18px;
+  border-top: 1px solid #46525f;
+  font-size: 17px;
+}
+
+.score-list .score-total strong {
+  color: var(--text);
+}
+
+.finale {
+  border-top: 1px solid var(--line);
+  padding-top: 42px;
+}
+
+.final-score {
+  font-size: 18px !important;
+}
+
+@media (max-width: 480px) {
+  .game-facts div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
