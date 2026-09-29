@@ -66,8 +66,23 @@
       }
       .qm-add-button:hover { transform:translateY(-1px); border-color:#596672; }
       .qm-toolbar {
-        display:flex; justify-content:flex-end; margin:24px 0 2px;
+        display:flex; justify-content:flex-end; gap:10px; margin:24px 0 2px;
+        flex-wrap:wrap;
       }
+      .qm-tool-button {
+        display:inline-flex; align-items:center; gap:7px;
+        border:1px solid var(--line, #2a3139);
+        background:transparent; color:var(--muted,#929ca6);
+        border-radius:999px; padding:10px 14px; cursor:pointer;
+        font:inherit; font-size:12px; font-weight:650;
+        transition:.18s ease;
+      }
+      .qm-tool-button:hover {
+        color:var(--text,#edf1f4);
+        border-color:#596672;
+        transform:translateY(-1px);
+      }
+      .qm-import-input { display:none; }
 
       .qm-modal-backdrop {
         position:fixed; inset:0; z-index:9999;
@@ -469,18 +484,145 @@
     setTimeout(() => nameInput.focus(), 20);
   }
 
+
+  function exportJson() {
+    const store = readStore();
+    const payload = {
+      schema: "my-game-archive-queue",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      website: "https://zongh1-a11y.github.io/my-game-archive/",
+      data: store
+    };
+
+    const blob = new Blob(
+      [JSON.stringify(payload, null, 2)],
+      { type: "application/json;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `my-game-archive-queue-${stamp}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function validateImportedPayload(raw) {
+    const payload = raw?.data ? raw : { data: raw };
+
+    if (!payload.data || typeof payload.data !== "object") {
+      throw new Error("JSON 中缺少可识别的清单数据。");
+    }
+
+    const data = payload.data;
+    const overrides = data.overrides ?? {};
+    const custom = data.custom ?? [];
+
+    if (typeof overrides !== "object" || Array.isArray(overrides)) {
+      throw new Error("overrides 数据格式不正确。");
+    }
+    if (!Array.isArray(custom)) {
+      throw new Error("custom 数据格式不正确。");
+    }
+
+    for (const item of custom) {
+      if (!item || typeof item !== "object") {
+        throw new Error("custom 中存在无效条目。");
+      }
+      if (typeof item.name !== "string" || !item.name.trim()) {
+        throw new Error("有游戏缺少名称。");
+      }
+      if (!["PC", "NS1", "NS2", "GBA", "3DS", "OTHER"].includes(item.platform)) {
+        throw new Error(`《${item.name}》的平台字段无效。`);
+      }
+      if (!["now", "next"].includes(item.status)) {
+        throw new Error(`《${item.name}》的状态字段无效。`);
+      }
+      if (typeof item.note !== "string") {
+        item.note = "";
+      }
+      if (!item.id) {
+        item.id = "custom-import-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7);
+      }
+    }
+
+    return {
+      overrides,
+      custom
+    };
+  }
+
+  async function importJsonFile(file) {
+    if (!file) return;
+
+    const text = await file.text();
+    let raw;
+    try {
+      raw = JSON.parse(text);
+    } catch {
+      throw new Error("这个文件不是有效的 JSON。");
+    }
+
+    const normalized = validateImportedPayload(raw);
+
+    const shouldReplace = confirm(
+      "导入会覆盖当前浏览器里保存的游玩清单修改。\n\n" +
+      "建议先点击“导出 JSON”备份。\n\n" +
+      "确定继续导入吗？"
+    );
+    if (!shouldReplace) return;
+
+    writeStore(normalized);
+    alert("导入成功。页面将重新加载。");
+    location.reload();
+  }
+
   function addToolbar() {
     const hero = document.querySelector(".queue-hero");
     if (!hero || document.querySelector(".qm-toolbar")) return;
 
     const toolbar = document.createElement("div");
     toolbar.className = "qm-toolbar";
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "qm-add-button";
-    btn.innerHTML = "<span>＋</span><span>添加游戏</span>";
-    btn.addEventListener("click", () => openModal());
-    toolbar.appendChild(btn);
+
+    const importInput = document.createElement("input");
+    importInput.type = "file";
+    importInput.accept = "application/json,.json";
+    importInput.className = "qm-import-input";
+    importInput.addEventListener("change", async () => {
+      const file = importInput.files?.[0];
+      if (!file) return;
+      try {
+        await importJsonFile(file);
+      } catch (err) {
+        alert("导入失败：" + (err?.message || "未知错误"));
+      } finally {
+        importInput.value = "";
+      }
+    });
+
+    const importBtn = document.createElement("button");
+    importBtn.type = "button";
+    importBtn.className = "qm-tool-button";
+    importBtn.textContent = "导入 JSON";
+    importBtn.addEventListener("click", () => importInput.click());
+
+    const exportBtn = document.createElement("button");
+    exportBtn.type = "button";
+    exportBtn.className = "qm-tool-button";
+    exportBtn.textContent = "导出 JSON";
+    exportBtn.addEventListener("click", exportJson);
+
+    const addBtn = document.createElement("button");
+    addBtn.type = "button";
+    addBtn.className = "qm-add-button";
+    addBtn.innerHTML = "<span>＋</span><span>添加游戏</span>";
+    addBtn.addEventListener("click", () => openModal());
+
+    toolbar.append(importInput, importBtn, exportBtn, addBtn);
     hero.insertAdjacentElement("afterend", toolbar);
   }
 
