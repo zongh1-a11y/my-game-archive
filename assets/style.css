@@ -713,3 +713,73 @@ footer {
   .queue-card h3 { font-size: 18px; }
   .queue-add-card { padding: 18px 10px; }
 }
+
+
+/* Platform badges */
+.queue-cover { position: relative; }
+
+.platform-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  min-width: 42px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-align: center;
+  box-shadow: 0 5px 16px rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.platform-pc { background: #2563eb; }
+.platform-ns1 { background: #b91c1c; }
+.platform-ns2 { background: #e60012; }
+.platform-3ds { background: #7c3aed; }
+.platform-gba { background: #16845b; }
+
+.title-cover {
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 75% 18%, rgba(115,146,181,.18), transparent 35%),
+    linear-gradient(145deg, #19212a, #0d1014 68%);
+}
+
+.next-cover {
+  background:
+    radial-gradient(circle at 70% 15%, rgba(113,99,151,.18), transparent 35%),
+    linear-gradient(145deg, #171a21, #0d1014 70%);
+}
+
+.cover-title small {
+  display: block;
+  color: #76828d;
+  font-size: 9px;
+  letter-spacing: .16em;
+  margin-bottom: 5px;
+}
+
+.cover-title strong {
+  display: block;
+  color: #eef2f5;
+  font-size: 23px;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+
+@media (max-width: 480px) {
+  .platform-badge {
+    top: 7px;
+    right: 7px;
+    min-width: 38px;
+    padding: 4px 7px;
+    font-size: 9px;
+  }
+  .title-cover { padding: 12px; }
+  .cover-title strong { font-size: 18px; }
+}
