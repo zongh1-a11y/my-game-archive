@@ -18,6 +18,8 @@ python -m http.server 8000
 http://localhost:8000
 ```
 
+## 2. 替换《识质存在》封面
+
 把你准备好的封面图片放到：
 
 ```text
@@ -139,4 +141,3 @@ game_archive/
 ## 建议备份
 
 原图和截图最好同时保留一份本地原始备份。网站里的图片可以适当压缩，避免仓库过大。
-https://zongh1-a11y.github.io/my-game-archive/
