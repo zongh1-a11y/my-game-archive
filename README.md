@@ -1,143 +1,49 @@
-# 我的游戏档案馆 — Starter
+# 游玩清单自助管理功能补丁
 
-这是一个纯静态网站，不需要数据库、Node.js 或前端框架。
+这是“非破坏式”补丁包：不会覆盖你现有的 index.html、queue.html、style.css 或你自己改过的游戏描述。
 
-## 1. 先在电脑本地打开
+## 使用方法
 
-解压后直接双击 `index.html` 即可。
-
-如果浏览器对本地文件有限制，可以在该文件夹打开终端：
-
-```bash
-python -m http.server 8000
-```
-
-然后浏览器打开：
+1. 把本压缩包解压到你本地的 `my-game-archive` 仓库根目录。
+2. 解压后会新增：
 
 ```text
-http://localhost:8000
+assets/queue-manager.js
 ```
 
-## 2. 替换《识质存在》封面
-
-把你准备好的封面图片放到：
-
-```text
-assets/covers/
-```
-
-例如：
-
-```text
-assets/covers/pragmata.jpg
-```
-
-然后在两个文件中：
-
-- `index.html`
-- `games/pragmata.html`
-
-把：
+3. 打开你当前最新的 `queue.html`，只在 `</body>` 前增加这一行：
 
 ```html
-pragmata-placeholder.svg
+<script src="assets/queue-manager.js"></script>
 ```
 
-改成：
+4. 保存后用 GitHub Desktop：
+   - Commit to main
+   - Push origin
 
-```html
-pragmata.jpg
-```
+## 新增功能
 
-## 3. 添加自己的截图
+- “＋ 添加游戏”按钮
+- 弹窗填写游戏名称
+- 平台：PC / NS1 / NS2 / GBA / 3DS / 其他
+- 状态：正在玩 / 准备玩
+- 自定义备注
+- 自动平台彩色徽标
+- 已有卡片增加“编辑 / 删除”
+- 可以把游戏从“准备要玩”直接改成“正在玩”
+- 使用浏览器 localStorage 保存
 
-把截图放到：
+## 平台颜色
 
-```text
-assets/screenshots/pragmata/
-```
+- PC：蓝色
+- NS1：深红
+- NS2：亮红
+- GBA：绿色
+- 3DS：紫色
+- 其他：灰色
 
-例如：
+## 注意
 
-```text
-01.jpg
-02.jpg
-03.jpg
-```
+localStorage 只保存在当前浏览器。换设备、换浏览器或清除站点数据后，不会自动同步。
 
-然后在 `games/pragmata.html` 的“截图墙”位置，把占位块替换成：
-
-```html
-<img src="../assets/screenshots/pragmata/01.jpg" alt="截图说明" />
-```
-
-## 4. 添加下一款游戏
-
-最简单的方法：
-
-1. 复制 `games/_template.html`
-2. 重命名，比如 `fire-emblem-7.html`
-3. 修改标题、平台、日期、评分、正文、图片
-4. 在 `index.html` 的 `.game-grid` 中复制一张 `.game-card`
-5. 把链接改到新页面
-
-这就是整个网站的维护方式。
-
-## 5. 发布到 GitHub Pages
-
-### 方法 A：网页上传（最简单）
-
-1. GitHub 新建一个 repository，例如 `my-game-archive`
-2. 上传本文件夹中的所有内容
-3. 打开 repository → `Settings`
-4. 左侧进入 `Pages`
-5. `Build and deployment` → `Source` 选择 `Deploy from a branch`
-6. Branch 选择 `main`
-7. Folder 选择 `/(root)`
-8. 保存
-
-发布后的地址一般类似：
-
-```text
-https://你的GitHub用户名.github.io/my-game-archive/
-```
-
-以后每次更新 repository，网页也会跟着更新。
-
-## 6. 推荐的长期目录结构
-
-```text
-game_archive/
-├── index.html
-├── assets/
-│   ├── style.css
-│   ├── covers/
-│   │   ├── pragmata.jpg
-│   │   └── next-game.jpg
-│   └── screenshots/
-│       ├── pragmata/
-│       │   ├── 01.jpg
-│       │   └── 02.jpg
-│       └── next-game/
-└── games/
-    ├── pragmata.html
-    ├── next-game.html
-    └── _template.html
-```
-
-## 7. 第一版先不要做的东西
-
-暂时不要急着引入：
-
-- React / Vue
-- 数据库
-- 登录系统
-- 后台管理
-- 自动抓取 IGDB
-- 评论系统
-
-等你真实记录到 10–20 款游戏以后，再判断哪些功能值得自动化。
-
-## 建议备份
-
-原图和截图最好同时保留一份本地原始备份。网站里的图片可以适当压缩，避免仓库过大。
+https://zongh1-a11y.github.io/my-game-archive/
