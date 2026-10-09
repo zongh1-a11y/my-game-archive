@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Orbitals 轨道双子星 文字设计封面">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0.95" y2="1"><stop offset="0" stop-color="#182848"/><stop offset="0.57" stop-color="#26325c"/><stop offset="1" stop-color="#4b2556"/></linearGradient>
+  <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd68a"/><stop offset="1" stop-color="#fa866d"/></radialGradient>
+  <pattern id="scan" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 H8" stroke="#fff" stroke-opacity=".035"/></pattern>
+</defs>
+<rect width="900" height="1200" fill="url(#sky)"/>
+<g stroke="#e1a7b8" stroke-opacity=".38" fill="none" stroke-width="3"><ellipse cx="455" cy="525" rx="335" ry="145" transform="rotate(-23 455 525)"/><ellipse cx="455" cy="525" rx="355" ry="205" transform="rotate(24 455 525)"/><ellipse cx="455" cy="525" rx="310" ry="270" transform="rotate(-8 455 525)"/></g>
+<circle cx="488" cy="525" r="166" fill="url(#sun)" opacity=".94"/><circle cx="488" cy="525" r="193" fill="none" stroke="#ffc998" opacity=".24" stroke-width="7"/>
+<g fill="#e7e9ff"><circle cx="91" cy="121" r="3"/><circle cx="742" cy="169" r="5"/><circle cx="793" cy="360" r="2"/><circle cx="137" cy="595" r="4"/><circle cx="703" cy="738" r="4"/><circle cx="140" cy="879" r="2"/><circle cx="789" cy="906" r="3"/><circle cx="544" cy="196" r="2"/><circle cx="308" cy="247" r="4"/></g>
+<g stroke="#fff6d7" stroke-width="4" stroke-linecap="round" opacity=".85"><path d="M726 295h28m-14-14v28"/><path d="M193 319h18m-9-9v18"/></g>
+<g font-family="Arial, sans-serif" fill="#f7e2cb" text-anchor="middle">
+<text x="450" y="108" font-size="24" letter-spacing="11" font-weight="700">GAME ARCHIVE 002</text>
+<text x="450" y="978" font-size="109" font-weight="900" letter-spacing="2">ORBITALS</text>
+<text x="450" y="1051" font-family="'Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-weight="800" font-size="48">轨道双子星</text>
+<text x="450" y="1109" font-size="21" letter-spacing="6">CO-OP · NINTENDO SWITCH 2</text>
+</g>
+<rect width="900" height="1200" fill="url(#scan)"/>
+</svg>
