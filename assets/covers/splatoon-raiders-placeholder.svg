@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="斯普拉遁 涂击队封面备用图">
+<defs><linearGradient id="bg" x2="0.9" y2="1"><stop stop-color="#0a3633"/><stop offset=".52" stop-color="#176b3b"/><stop offset="1" stop-color="#d57422"/></linearGradient></defs>
+<rect width="600" height="900" fill="url(#bg)"/>
+<g opacity=".24" fill="none"><path d="M-20 210 Q160 80 380 245 T650 142" stroke="#eaff42" stroke-width="65"/><path d="M-15 720 Q180 595 350 753 T610 690" stroke="#ffda16" stroke-width="74"/></g>
+<g fill="#fff" font-family="Arial,sans-serif" text-anchor="middle"><text x="300" y="345" font-weight="900" font-size="65">SPLATOON</text><text x="300" y="455" font-weight="900" font-size="93" fill="#ffd346">RAIDERS</text><text x="300" y="585" font-size="29" letter-spacing="4">斯普拉遁 · 涂击队</text></g>
+</svg>
